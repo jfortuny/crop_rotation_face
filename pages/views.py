@@ -7,3 +7,7 @@ def index(request):
 
 def about(request):
     return render(request, 'pages/about.html')
+
+
+def test(request):
+    return render(request, 'pages/test.html')
