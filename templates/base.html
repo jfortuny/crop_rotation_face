@@ -20,15 +20,22 @@
 </head>
 <body>
 
-    <!-- Top Bar -->
-    {% include 'partials/_topbar.html' %}
-    <!-- Nav Bar -->
-    {% include 'partials/_navbar.html' %}
-    <!-- Main content -->
-    {% block content %}
-    {% endblock %}
-    <!-- Footer -->
-    {% include 'partials/_footer.html' %}
+<!-- Top Bar -->
+{#    {% include 'partials/_topbar.html' %}#}
+
+<!-- Nav Bar -->
+{% include 'partials/_navbar.html' %}
+
+<!-- Main content -->
+<main class="container">
+    <div class="bg-light p-5 rounded">
+        {% block content %}
+        {% endblock %}
+    </div>
+</main>
+
+<!-- Footer -->
+{% include 'partials/_footer.html' %}
 
 <!-- Optional JavaScript; choose one of the two! -->
 

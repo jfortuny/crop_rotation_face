@@ -1,4 +1,53 @@
 {% load static %}
 
 <!-- Navbar -->
-This is the Nav Bar so far
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color:green; color:white;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}"><i class="fas fa-tractor"></i>&nbsp;&nbsp;Crop Rotation</a>
+        {#        <a class="navbar-brand" href="#">Fixed navbar</a>#}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Data</a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Change</a></li>
+                        <li><a class="dropdown-item" href="#">Report</a></li>
+                        <li><a class="dropdown-item" href="#">Spreadsheet</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Rotation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Issues</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">About</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
