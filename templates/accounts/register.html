@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-header" style="background-color:green; color:white;">
+                        <h5><i class="fas fa-user-plus"> Register</i></h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Alerts -->
+                        {% include "partials/_alerts.html" %}
+                        <form action="{% url 'register' %}" method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="first_name" class="form-label">First Name: </label>
+                                <input type="text" id="first_name" name="first_name" class="form-control"
+                                       aria-describedby="first_name_help">
+                                <div id="first_name_help" class="form-text visually-hidden">First Name field is
+                                    required
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="last_name" class="form-label">Last Name: </label>
+                                <input type="text" id="last_name" name="last_name" class="form-control"
+                                       aria-describedby="last_name_help">
+                                <div id="last_name_help" class="form-text visually-hidden">Last Name field is required
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username: </label>
+                                <input type="text" id="username" name="username" class="form-control" aria-describedby="username_help">
+                                <div id="username_help" class="form-text visually-hidden">Username field is required
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email: </label>
+                                <input type="email" id="email" name="email" class="form-control" aria-describedby="email_help">
+                                <div id="email_help" class="form-text visually-hidden">Email field is required</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password: </label>
+                                <input type="password" id="password" name="password" class="form-control"
+                                       aria-describedby="password_help">
+                                <div id="password_help" class="form-text visually-hidden">Password field is required
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password2" class="form-label">Confirm Password: </label>
+                                <input type="password" id="password" name="password2" class="form-control"
+                                       aria-describedby="password2_help">
+                                <div id="password2_help" class="form-text visually-hidden">Confirm Password field is
+                                    required
+                                </div>
+                            </div>
+                            <input type="submit" value="Register" class="btn btn-secondary">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
