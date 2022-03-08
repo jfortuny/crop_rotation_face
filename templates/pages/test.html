@@ -16,4 +16,14 @@
           </div>
     </div>
     <hr>
+    <div id="disappearingmessage">
+        Disappearing message
+    </div>
 {% endblock %}
+<script>
+    //Automatically fade out messages
+setTimeout(function() {
+    $("#disappearingmessage").fadeOut('slow')
+}, 3000);
+
+</script>

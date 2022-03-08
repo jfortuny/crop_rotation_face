@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
     'spreadsheets.apps.SpreadsheetsConfig',
+    'contacts.apps.ContactsConfig',
 
 ]
 

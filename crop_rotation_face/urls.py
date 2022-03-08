@@ -21,5 +21,6 @@ urlpatterns = [
     path('', include('pages.urls')),
     path('spreadsheet/', include('spreadsheets.urls')),
     path('accounts/', include('accounts.urls')),
+    path('contacts/', include('contacts.urls')),
 
 ]

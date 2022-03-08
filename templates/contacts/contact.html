@@ -1,0 +1,70 @@
+<!-- Modal Contact Us -->
+<div class="modal fade" id="contactUsModal" tabindex="-1"
+     aria-labelledby="contactUsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactUsModalLabel">Contact Us</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'contact' %}" method="post">
+                    {% csrf_token %}
+
+                    {% if user.is_authenticatd %}
+                        <input type="hidden" name="user_id" value="{{ user.id }}">
+                    {% else %}
+                        <input type="hidden" name="user_id" value="0">
+                    {% endif %}
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" id="name" name="name" aria-describedby="nameHelp" required
+                                {% if user.is_authenticated %}
+                               value="{{ user.first_name }} {{ user.last_name }}"
+                                {% endif %}>
+{#                        <div id="nameHelp" class="form-text">Please enter your First and Last names</div>#}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" id="email" name="email" aria-describedby="emailHelp" required
+                                {% if user.is_authenticated %}
+                               value="{{ user.email }}"
+                                {% endif %}>
+{#                        <div id="emailHelp" class="form-text">Please enter your Email address</div>#}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number:</label>
+                        <input type="text" id="phone" name="phone" aria-describedby="phoneHelp">
+{#                        <div id="phoneHelp" class="form-text">Please enter your PhoneNumber</div>#}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="canSMS" class="form-label">Can receive SMS messages?</label>
+                        <input type="checkbox" id="canSMS" name="canSMS" aria-describedby="canSMSHelp">
+{#                        <div id="canSMSHelp" class="form-text">Check if Phone can receive messages</div>#}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Subject:</label>
+                        <input type="text" id="subject" name="subject" aria-describedby="subjectHelp" required>
+{#                        <div id="subjectHelp" class="form-text">Please enter a short description for this message</div>#}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="msg" class="form-label" style="vertical-align: top;">Message:</label>
+                        <textarea id="msg" name="msg" aria-describedby="msgHelp" rows="5" cols="30"></textarea>
+{#                        <div id="msgHelp" class="form-text">Please enter your message</div>#}
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" href="{% url 'contact' %}">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

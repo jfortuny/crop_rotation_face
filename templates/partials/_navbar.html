@@ -46,8 +46,19 @@
                     <a class="nav-link">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Issues</a>
-                </li>
+                    <a class="nav-link" href="#"
+                       data-bs-toggle="modal" data-bs-target="#contactUsModal">
+                        Contact Us
+                    </a>
+                {#                <li class="nav-item">#}
+                {#                    {% if 'contact' in request.path %}#}
+                {#                        <a class="nav-link active" href="{% url 'contact' %}"#}
+                {#                           data-bs-toggle="modal" data-bs-target="#contactUsModal">Contact Us</a>#}
+                {#                    {% else %}#}
+                {#                        <a class="nav-link" href="{% url 'contact' %}"#}
+                {#                           data-bs-toggle="modal" data-bs-target="#contactUsModal">Contact Us</a>#}
+                {#                    {% endif %}#}
+                {#                </li>#}
                 <li class="nav-item">
                     <a class="nav-link">Account</a>
                 </li>
@@ -63,30 +74,52 @@
             </ul>
             <div class="d-flex">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a
-                                {% if 'login' in request.path %}
-                                    class="nav-link active" aria-current="page" href="{% url 'login' %}">
-                                    <i class="fas fa-sign-in-alt"> Log In</i>
-                                {% else %}
-                                    class="nav-link" href="{% url 'login' %}">
-                                    <i class="fas fa-sign-in-alt"> Log In</i>
-                                {% endif %}
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a
-                                {% if 'register' in request.path %}
-                                    class="nav-link active" aria-current="page" href="{% url 'register' %}">
-                                    <i class="fas fa-user-plus"> Sign Up</i>
-                                {% else %}
-                                    class="nav-link" href="{% url 'register' %}">
-                                    <i class="fas fa-user-plus"> Sign Up</i>
-                                {% endif %}
-                        </a>
-                    </li>
-                </ul>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a
+                                    {% if 'dashboard' in request.path %}
+                                        class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">
+                                        Welcome {{ user.username }}!
+                                    {% endif %}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
+                                <i class="fas fa-sign-out-alt"> Log out</i>
+                            </a>
+                            <form action="{% url 'logout' %}" method="POST" id="logout">
+                                {% csrf_token %}
+                                <input type="hidden">
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a
+                                    {% if 'login' in request.path %}
+                                        class="nav-link active" aria-current="page" href="{% url 'login' %}">
+                                        <i class="fas fa-sign-in-alt"> Log In</i>
+                                    {% else %}
+                                        class="nav-link" href="{% url 'login' %}">
+                                        <i class="fas fa-sign-in-alt"> Log In</i>
+                                    {% endif %}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                    {% if 'register' in request.path %}
+                                        class="nav-link active" aria-current="page" href="{% url 'register' %}">
+                                        <i class="fas fa-user-plus"> Sign Up</i>
+                                    {% else %}
+                                        class="nav-link" href="{% url 'register' %}">
+                                        <i class="fas fa-user-plus"> Sign Up</i>
+                                    {% endif %}
+                            </a>
+                        </li>
+                        </ul>
+                    {% endif %}
             </div>
         </div>
     </div>
 </nav>
+
+{% include 'contacts/contact.html' %}

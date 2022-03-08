@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+
+    <title>timeOut test Bootstrap 5</title>
+</head>
+<body>
+
+<!-- Div message to fade out -->
+<div id="message" class="container">
+    <div class="alert alert-error alert-dismissible fade show" role="alert">
+        <strong>Error: </strong>Error message issued
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+<br>
+<p class="text" id="para"></p>
+
+<script>
+
+    // test 2
+    const para = document.getElementById("para");
+
+    function myMessage() {
+        para.innerHTML = "I just appeared";
+        console.log("message appeared");
+    }
+
+    setTimeout(myMessage, 2000);
+
+    // test 3
+    function myRemoval() {
+        document.getElementById("message").remove();
+    }
+    setTimeout(myRemoval, 3000);
+
+    // Failing test
+    //Automatically fade out messages
+    //setTimeout(function () {$("#message").fadeOut('slow')}, 5000);
+
+
+    //Automatically fade out messages
+    // setTimeout(function() {
+    //     $(document.getElementById("message")).fadeOut('slow')
+    // }, 3000);
+
+    // setTimeout(() => {
+    //     $('#message').fadeOut('slow')
+    // }, 3000)
+
+</script>
+</body>
+</html>

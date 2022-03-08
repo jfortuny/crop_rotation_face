@@ -9,7 +9,7 @@ def login(request):
         # Get values
         username = request.POST.get('username')
         password = request.POST.get('password')
-
+        # Does the user exist and can it be authenticated?
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
@@ -62,7 +62,10 @@ def register(request):
 
 
 def logout(request):
-    return redirect('index')
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.success(request, 'You are now logged out')
+        return redirect('index')
 
 
 def dashboard(request):
