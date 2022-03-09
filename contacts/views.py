@@ -6,11 +6,15 @@ from .models import Contact
 # Create your views here.
 def contact(request):
     if request.method == "POST":
+        print("HELLO")
         user_id = request.POST['user_id']
         name = request.POST['name']
         email = request.POST['email']
         phone = request.POST['phone']
-        canSMS = request.POST['canSMS']
+        if request.POST['canSMS'] == "on":
+            canSMS = True
+        else:
+            canSMS = False
         subject = request.POST['subject']
         message = request.POST['msg']
         contact_date = datetime.now()
@@ -26,4 +30,5 @@ def contact(request):
         contact.save()
 
         messages.success(request, "Message submitted; we will contact you soon.")
+
         return redirect('index')

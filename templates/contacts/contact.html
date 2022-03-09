@@ -8,10 +8,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{% url 'contact' %}" method="post">
+                <form action="{% url 'contact' %}" method="POST">
                     {% csrf_token %}
 
-                    {% if user.is_authenticatd %}
+                    {% if user.is_authenticated %}
                         <input type="hidden" name="user_id" value="{{ user.id }}">
                     {% else %}
                         <input type="hidden" name="user_id" value="0">
@@ -41,6 +41,7 @@
 {#                        <div id="phoneHelp" class="form-text">Please enter your PhoneNumber</div>#}
                     </div>
 
+                    <input type="hidden" name="canSMS" value="off">
                     <div class="mb-3">
                         <label for="canSMS" class="form-label">Can receive SMS messages?</label>
                         <input type="checkbox" id="canSMS" name="canSMS" aria-describedby="canSMSHelp">
@@ -59,11 +60,12 @@
 {#                        <div id="msgHelp" class="form-text">Please enter your message</div>#}
                     </div>
 
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" href="{% url 'contact' %}">Save</button>
             </div>
         </div>
     </div>
